@@ -1,9 +1,8 @@
 package ar.edu.ucc.arqsoft.test.model;
 
-import org.hibernate.mapping.Set;
-
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Set;
 
 
 //Tabla Con info de las tarjetas, se declara entidad y nombre de la tabla
@@ -27,7 +26,8 @@ public class Card extends ObjetoGenerico{
 
     //Es un set hash set para evitar que se repitan las transacciones
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "CARD")
-    private Set<Transactions> transactions = new HashSet<Transactions>();
+    private java.util.Set<Transactions> transactions = new HashSet<Transactions>();
+//    private Set<Transactions> transactions = new HashSet<Transactions>();
 
 
     public int getNumber() {
