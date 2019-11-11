@@ -13,6 +13,8 @@ public class CardDto {
     private User user;
     private Set<Transactions> transactions;
 
+    public CardDto(Long id){}
+
 
     public CardDto(Long id, int number, double balance, User user) {
         this.id = id;

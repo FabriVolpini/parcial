@@ -11,9 +11,9 @@ public class TransactionsDto {
     private Date date;
     private double amount;
     private OperationType operationType;
-    private Card card;
+    private CardDto card;
 
-    public TransactionsDto(Long id, Date date, double amount, OperationType operationType, Card card) {
+    public TransactionsDto(Long id, Date date, double amount, OperationType operationType, CardDto card) {
         this.id = id;
         this.date = date;
         this.amount = amount;
@@ -53,11 +53,11 @@ public class TransactionsDto {
         this.operationType = operationType;
     }
 
-    public Card getCard() {
+    public CardDto getCard() {
         return card;
     }
 
-    public void setCard(Card card) {
+    public void setCard(CardDto card) {
         this.card = card;
     }
 }
