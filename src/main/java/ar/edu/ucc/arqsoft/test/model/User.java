@@ -6,11 +6,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "USER")
-public class User {
+public class User extends ObjetoGenerico {
 
     //nombre, apellido, dni y tarjetas
 
-    //String value columns necesitan el lenght
 
     @Column(name = "NAME",length = 100, nullable = false)
     private String name;
@@ -19,9 +18,9 @@ public class User {
     private String lastname;
 
     @Column(name = "DNI", nullable = false)
-    private int dni;
+    private String dni;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy="CARD")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy="USER")
     private List<Card> cards;
 
     public String getName() {
@@ -40,11 +39,11 @@ public class User {
         this.lastname = lastname;
     }
 
-    public int getDni() {
+    public String getDni() {
         return dni;
     }
 
-    public void setDni(int dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
 
