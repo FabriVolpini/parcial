@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "TRANSACTIONS")
-public class Transactions {
+@Table(name = "TRANSACTION")
+public class Transaction extends ObjetoGenerico {
 
     //Fecha, monto, tipo de operacion tarjeta
 
@@ -14,16 +14,16 @@ public class Transactions {
     private Date date;
 
     @Column(name = "AMOUNT", nullable = false)
-    private double amount;
+    private Double amount;
 
     //https://thoughts-on-java.org/hibernate-enum-mappings/
     @Enumerated(EnumType.ORDINAL)
-    @Column(name = "TYPE", nullable = false)
+    @Column(name = "OPERATION_TYPE", nullable = false)
     private OperationType operationType;
 
-    //Varias Operaciones para una tarjeta
-    @ManyToOne(fetch = FetchType.EAGER)
-    @Column(name = "ID_CARD", nullable = false)
+    //Varias transacciones para una tarjeta
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Card.class)
+    @JoinColumn(name = "CARD", nullable = false)
     private Card card;
 
     public Date getDate() {
@@ -34,11 +34,11 @@ public class Transactions {
         this.date = date;
     }
 
-    public double getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 

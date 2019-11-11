@@ -11,38 +11,36 @@ import java.util.Set;
 public class Card extends ObjetoGenerico{
 
     @Column(name = "NUMBER", nullable = false)
-    private int number;
+    private String number;
 
     @Column(name = "BALANCE", nullable = false)
-    private double balance;
+    private Double balance;
 
     //Muchas tarjetas para un usuario
-    //https://thoughts-on-java.org/entity-mappings-introduction-jpa-fetchtypes/
-    @ManyToOne(fetch = FetchType.EAGER)
-    //https://www.oscarblancarteblog.com/2018/12/13/personalizar-las-relaciones-con-joincolumn/
-    @JoinColumn(name = "ID_USER", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = User.class)
+    @JoinColumn(name = "USER", nullable = false)
     private User user;
 
 
     //Es un set hash set para evitar que se repitan las transacciones
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "CARD")
-    private java.util.Set<Transactions> transactions = new HashSet<Transactions>();
+    private java.util.Set<Transaction> transactions = new HashSet<Transaction>();
 //    private Set<Transactions> transactions = new HashSet<Transactions>();
 
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
-    public double getBalance() {
+    public Double getBalance() {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    public void setBalance(Double balance) {
         this.balance = balance;
     }
 
@@ -54,11 +52,11 @@ public class Card extends ObjetoGenerico{
         this.user = user;
     }
 
-    public Set<Transactions> getTransactions() {
+    public Set<Transaction> getTransactions() {
         return transactions;
     }
 
-    public void setTransactions(Set<Transactions> transactions) {
+    public void setTransactions(Set<Transaction> transactions) {
         this.transactions = transactions;
     }
 }
