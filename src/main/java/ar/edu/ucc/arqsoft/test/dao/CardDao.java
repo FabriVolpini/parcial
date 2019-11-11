@@ -6,8 +6,13 @@ import org.springframework.stereotype.Repository;
 
 //Provides CRUD operations
 @Repository
-public class CardDao extends DaoGenerico<Card, Long>{
+public class CardDao extends DaoGenerico<Card, Long> {
 
     boolean useCard(CardDto dto, double balance);
+
+
+
+
+
 
 }
