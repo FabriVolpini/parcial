@@ -3,6 +3,9 @@ package ar.edu.ucc.arqsoft.test.utils;
 import java.util.EnumSet;
 import java.util.Properties;
 
+import ar.edu.ucc.arqsoft.test.model.Card;
+import ar.edu.ucc.arqsoft.test.model.User;
+import org.hibernate.Transaction;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
@@ -25,6 +28,9 @@ public class SqlSchemaGenerator {
 		
 		// AGREGAR ACA SUS CLASES NUEVAS
 		metadata.addAnnotatedClass(ObjetoGenerico.class);
+		metadata.addAnnotatedClass(Card.class);
+		metadata.addAnnotatedClass(Transaction.class);
+		metadata.addAnnotatedClass(User.class);
 	
 		// Agregar las Clases
 		SchemaExport schemaExport = new SchemaExport();
